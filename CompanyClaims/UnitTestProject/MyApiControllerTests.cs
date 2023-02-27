@@ -148,6 +148,24 @@ namespace UnitTestProject
             Assert.Equal(claim.AssuredName, "Jane Smith");
         }
 
+        [Fact]
+        public void Get_ReturnsClaimHasAge()
+        {
+
+            // Arrange           
+            var mapper = GetMapper();
+
+            _mockClaimRepo.Setup(repo => repo.GetClaimByRef(It.IsAny<string>())).Returns((string s) => _claimList.FirstOrDefault(x => x.UCR.Equals(s)));
+
+            // Act
+            var result = _claimController.GetClaimbyUCR("C-2021-0001");
+            var okResult = result as OkObjectResult;
+
+            // Assert
+            var claim = Assert.IsType<ClaimDTO>(okResult.Value);
+            Assert.True(claim.ClaimAgeInDays>0);
+        }
+
     }
 
 }

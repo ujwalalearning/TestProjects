@@ -1,0 +1,16 @@
+*/obj/
+*/bin/
+*.cache
+*.dll
+*.exe
+*.pdb
+*.suo
+*.json
+obj/
+*.vspscc
+*.user
+packages/
+*.log
+.vs/
+Settings.StyleCop
+StyleCop.Cache
